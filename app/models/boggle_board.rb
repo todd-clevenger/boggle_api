@@ -1,5 +1,5 @@
 # Represents a boggle board - supports randomly generating a boggle board
-# Question:  Is it appropriate to put PORO's in the /models foler?  For now, seems appropirate.  Could move to /libs, but
+# Question:  Is it appropriate to put PORO's in the /models folder?  For now, seems appropirate.  Could move to /libs, but
 # currently using BoggleBoard public attributes to generate the REST contract.
 class BoggleBoard
   # declare DICE constant and initialize it with letters

@@ -6,10 +6,4 @@ class BoardController < ApplicationController
     render json: @board
   end
   
-  # looks up a word in an online english dictionary to validate that the word exists
-  # in the english language
-  # TODO:  Move this method to it's own controller and name it create
-  def check_word
-    render json: true
-  end
 end
