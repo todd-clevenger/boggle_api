@@ -1,0 +1,27 @@
+#boggle-container {
+    display: flex;
+    flex-direction: column;
+    width: 490px;
+    margin: 0 auto;
+}
+
+#board {
+	border: 5px solid #FFCA08;
+	background-color: #398BD4;
+	padding: 5px;
+	margin-top: 20px;
+}
+
+#word-submit {
+	margin: 15px 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+#center {
+	text-align: center;
+}
+
+#spaced {
+	margin: 0 3px;
+}
