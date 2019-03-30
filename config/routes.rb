@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post 'v1/board', to: "board#create"
   
   # post a word to the boggle game - will verify if it is a legitimate word
+  # could use get v1/words/:id but thinking of posting board layout
+  # for validation purposes such as letters exist on board and
+  # letters are adjacent to each other.
   post 'v1/words', to: "words#create"
   
 end

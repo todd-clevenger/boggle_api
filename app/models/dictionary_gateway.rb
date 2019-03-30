@@ -1,6 +1,7 @@
 # encapsulates the communication with the oxford dictionary API
 # for future, would be nice to make this a strategy pattern (not sure how yet in Ruby)
 # to support swapping API dictionaries without needing to change the calling code
+# question:  Should gateway patterns go in Models?  Seems like models is overloaded.
 class DictionaryGateway
   
   require 'rest_client'

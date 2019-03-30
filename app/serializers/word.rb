@@ -1,3 +1,4 @@
+# experimenting with ActiveModel Serialization
 # simple data contract class to control the JSON output of the results
 # of looking up a word
 class Word

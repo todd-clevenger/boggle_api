@@ -10,7 +10,7 @@ class WordsController < ApplicationController
     
     # allowing exceptions from underlying api to throw 500 status code
     # and generate a log entry    
-     word.exists = DictionaryGateway.new.exists(word.term)
+    word.exists = DictionaryGateway.new.exists(word.term)
 
     render json: word
   end
