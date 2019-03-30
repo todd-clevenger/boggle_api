@@ -7,24 +7,23 @@ class DictionaryGateway
   
   TIMEOUT_SECONDS = 10
   
-  # throws exceptions for invalid status codes
-  # :headers => { 'app_id' => ENV['BOGGLE_APP_ID'], 'app_key' => ENV['BOGGLE_APP_KEY']})
+  # throws exceptions for invalid status codes except 404
   def exists(word)
     
-    exists = false
+    exists = true
     
-    response = RestClient::Request.execute(
-      method: :get,
-      url: "https://od-api.oxforddictionaries.com/api/v1/entries/en/#{word}/regions=us",
-      timeout: TIMEOUT_SECONDS,
-      :headers => { 'app_id' => ENV['BOGGLE_APP_ID'], 'app_key' => ENV['BOGGLE_APP_KEY']}
-    )
-      
-    if (response.code == 200)
-      exists = true
+    begin
+      response = RestClient::Request.execute(
+        method: :get,
+        url: "https://od-api.oxforddictionaries.com/api/v1/entries/en/#{word}/regions=us",
+        timeout: TIMEOUT_SECONDS,
+        :headers => { 'app_id' => ENV['BOGGLE_APP_ID'], 'app_key' => ENV['BOGGLE_APP_KEY']}
+      )
+    rescue RestClient::NotFound => e
+      # ignore and leave exists false
+      exists = false
     end
-    
+
     return exists 
   end
-  
 end

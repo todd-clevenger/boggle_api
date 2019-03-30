@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   post 'v1/board', to: "board#create"
   
   # post a word to the boggle game - will verify if it is a legitimate word
-  post 'v1/words/:id', to: "words#create"
+  post 'v1/words', to: "words#create"
   
 end
