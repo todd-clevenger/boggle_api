@@ -5,12 +5,19 @@ class WordsController < ApplicationController
     
     exists = false
     
-    # TODO: Add some basic validation on the incoming word
     word = Word.new(params["term"], false)
-    
-    # allowing exceptions from underlying api to throw 500 status code
-    # and generate a log entry    
-    word.exists = DictionaryGateway.new.exists(word.term)
+
+    # check to see if the word exists on the board
+    board = BoggleBoard.new
+    exists = board.search(word.term, params["tiles"])
+
+    # now, see if the word is an actual English word
+    if (exists)
+      # allowing exceptions from underlying api to throw 500 status code
+      # and generate a log entry - to protect system from downstream
+      # latency and failures, use circuit breaker    
+      word.exists = DictionaryGateway.new.exists(word.term)
+    end
 
     render json: word
   end
