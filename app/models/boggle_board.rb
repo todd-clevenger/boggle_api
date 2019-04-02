@@ -57,7 +57,7 @@ class BoggleBoard
   end
 
   def search(word, board)
-    if (word.length , 3)
+    if (word.length < 3)
       return false
     end
 
@@ -81,7 +81,7 @@ class BoggleBoard
   #traverse the neighbors looking for a match
   def traverse(pos, used_set, uword)
     NEIGHBORS[pos].each do |i|
-      if (uword[0] == BOARD[i] && !used_set.include?(i))
+      if (uword[0] == @board[i] && !used_set.include?(i))
         if (uword.length == 1)
           return true
         else
