@@ -24,6 +24,7 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '1.3.13'
+  gem 'minitest-reporters', '>= 0.5.0'
 end
 
 group :development do
@@ -36,5 +37,7 @@ end
 group :production do
   #gem 'pg', '0.20.0'
 end
+
+gem 'simplecov', require: false, group: :test
 
 gem 'tzinfo-data'
