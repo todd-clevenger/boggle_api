@@ -9,7 +9,6 @@ class BoggleBoardTest < ActiveSupport::TestCase
   end
   test 'invalid word is not found' do
     board = BoggleBoard.new
-    puts board.tiles
     assert_not board.search('bogus1', %w[S I B E W M O I N P A G Y I Qu A])
   end
   test 'valid word is found' do

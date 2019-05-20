@@ -11,18 +11,20 @@ class DictionaryGateway
 
   # throws exceptions for invalid status codes except 404
   def exists(word)
+    Rails.logger.debug { "DictionaryGateway#exists(#{word})" }
     exists = true
     begin
       RestClient::Request.execute(
         method: :get,
         url: "https://od-api.oxforddictionaries.com/api/v2/entries/en-us/#{word}",
         timeout: TIMEOUT_SECONDS,
-        headers: {'app_id' => ENV['BOGGLE_APP_ID'], 'app_key' => ENV['BOGGLE_APP_KEY']}
+        headers: { 'app_id' => ENV['BOGGLE_APP_ID'],
+                   'app_key' => ENV['BOGGLE_APP_KEY'] }
       )
 
     rescue RestClient::Forbidden
       Rails.logger.debug do
-        "403 Forbidden from Oxford API " \
+        '403 Forbidden from Oxford API ' \
         "BOGGLE_APP_ID=#{ENV['BOGGLE_APP_ID']};" \
           "BOGGLE_APP_KEY=#{ENV['BOGGLE_APP_KEY']}"
       end
