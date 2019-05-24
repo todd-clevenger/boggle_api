@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -15,15 +17,16 @@ gem 'redis', '~> 4.0'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'rack-cors'
 gem 'rest-client', '~> 2.0.1'
-gem 'active_model_serializers', '~> 0.10.0'
+
+gem 'sqlite3', '1.3.13'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '1.3.13'
   gem 'minitest-reporters', '>= 0.5.0'
 end
 
@@ -35,7 +38,7 @@ group :development do
 end
 
 group :production do
-  #gem 'pg', '0.20.0'
+  # gem 'pg', '0.20.0'
 end
 
 gem 'simplecov', require: false, group: :test
